@@ -1,16 +1,31 @@
 <!DOCTYPE html>
 <html lang = "ja">
     <head>
-        <meta charset = "utf-8">
-        <title>フォームからデータを受け取る</title>
+        <meta charset = "UTF-8">
+        <title>BlockAroseScoreViewer</title>
     </head>
 
     <body>
-        <h1>フォームデータの送信</h1>
+        <h1>スコアDB確認フォーム</h1>
 
-        <form action = "selecttest.php" method = “POST”>
-            <input type = "text" name ="getall">
-            <input type = "submit" value ="データ取得">
+        <form action = "show_data.php" method = "POST">
+            <p>
+                <label>上位何件を取得するか</label>
+                <input type = "number" name = "num" value="10" min="0">
+            </p>
+            <p><input type = "submit" value ="全件取得"></p>
         </form>
+
+        <form action = "add_data.php" method = "POST">
+                <p>
+                    <label>名前</label>
+                    <input type = "text" name = "name">
+                </p>    
+                <p>
+                    <label>スコア</label>
+                    <input type = "number" name = "score" value="10" min="0">
+                </p>
+                <p><input type = "submit" value ="データ追加"></p>
+            </form>
     </body>
 </html>
