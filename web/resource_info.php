@@ -37,7 +37,7 @@ class ResourceInfo
   function getAllData(){
     $db = DB::getInstance();
     
-    $sql = "SELECT name, score FROM scoredata";
+    $sql = "SELECT name, score FROM scoredata ORDER BY scoredata.score DESC";
     $dbres = $db->query($sql);
     $dbret = $db->fetch($dbres);
 
@@ -71,11 +71,11 @@ class ResourceInfo
     $sql = "INSERT INTO scoredata (name,score) VALUES ('$name',$score)";
     $dbres = $db->query($sql);
     if($dbres !== false){
-      echo "Success fully inserted query $sql";
+      echo "INSERTSuccess";
     }
     else
     {
-      echo "insert error";
+      echo "INSERTFailed";
     }
   }
 }
