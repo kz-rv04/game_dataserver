@@ -37,7 +37,7 @@ class ResourceInfo
   function getAllData(){
     $db = DB::getInstance();
     
-    $sql = "SELECT name, score FROM scoredata ORDER BY scoredata.score DESC";
+    $sql = "SELECT name, score, level FROM scoredata ORDER BY scoredata.score DESC";
     $dbres = $db->query($sql);
     $dbret = $db->fetch($dbres);
 
@@ -56,7 +56,7 @@ class ResourceInfo
 
     //$sql = "SELECT name, score FROM scoredata ORDER BY scoredata.score DESC LIMIT $num";
     //$dbres = $db->query($sql);
-    $sql = "SELECT name, score FROM scoredata ORDER BY scoredata.score DESC LIMIT ?";
+    $sql = "SELECT name, score, level FROM scoredata ORDER BY scoredata.score DESC LIMIT ?";
     $dbres = $db->query($sql,[$num]);
     $dbret = $db->fetch($dbres);
 
@@ -67,13 +67,13 @@ class ResourceInfo
     return $result;
   }
 
-  function addData($name,$score){
+  function addData($name,$score,$level){
     $db = DB::getInstance();
 
-    //$sql = "INSERT INTO scoredata (name,score) VALUES ('$name',$score)";
+    //$sql = "INSERT INTO scoredata (name,score,level) VALUES ('$name',$score,level)";
     //$dbres = $db->query($sql);
-    $sql = "INSERT INTO scoredata (name,score) VALUES (?,?)";
-    $dbres = $db->query($sql, [$name,$score]);
+    $sql = "INSERT INTO scoredata (name,score,level) VALUES (?, ?, ?)";
+    $dbres = $db->query($sql, [$name, $score, $level]);
     if($dbres !== false){
       echo "INSERTSuccess";
     }
