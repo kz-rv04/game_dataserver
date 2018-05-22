@@ -53,7 +53,9 @@ class DB
 
     if($params)
     {
-        // bindparamする
+        $sth = $pdo->prepare($sql);
+        $sth->execute($params);
+        $dbres = $sth;
     }
     else
     {
